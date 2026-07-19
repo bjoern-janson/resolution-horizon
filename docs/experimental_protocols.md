@@ -27,13 +27,15 @@ To evaluate the framework without confounding structural limits with model speci
 
 To map out the empirical response surface $k^* = f(N, \sigma, E_{\mathrm{cov}}, \Gamma)$, the operator must perform three isolated resource sweeps:
 
-[ EMISSIVE EXPERIMENTAL MATRIX ]
-                             │
- ┌───────────────────────────┼───────────────────────────┐
- ▼                           ▼                           ▼
- [ Sweep I: Data Volume ]    [ Sweep II: Noise Floor ]   [ Sweep III: Regularization ]
-N: 10^3 ──► 10^6            σ: 0.00 ──► 0.50            λ_N: 0.1 ──► 10.0
-Prediction: ∂k*/∂N > 0      Prediction: ∂k*/∂σ < 0      Purpose: Bypass Diagnostic
+* **Sweep I: Data Volume**
+  * Range: $N = 10^3 \longrightarrow 10^6$
+  * Prediction: $\frac{\partial k^*}{\partial N} > 0$
+* **Sweep II: Noise Floor**
+  * Range: $\sigma = 0.00 \longrightarrow 0.50$
+  * Prediction: $\frac{\partial k^*}{\partial \sigma} < 0$
+* **Sweep III: Regularization**
+  * Range: $\lambda_N = 0.1 \longrightarrow 10.0$
+  * Purpose: Bypass Diagnostic
 
 ---
 
@@ -41,9 +43,9 @@ Prediction: ∂k*/∂N > 0      Prediction: ∂k*/∂σ < 0      Purpose: Bypass
 
 The Regularization Bypass protocol is the primary tool for testing the causal origin of the discovery limit.
 
-1.  **Freeze Environment:** Lock dataset footprint constraints exactly at $N = 100000$, $\sigma = 0.02$, with fixed state-space coverage profiles.
-2.  **Execute Step Intervention:** Evaluate the system across an explicit shift in filter scale:
-    $$\lambda_N^{(1)} = 1.0 \quad \longrightarrow \quad \lambda_N^{(2)} = 8.0$$
-3.  **Evaluate Causal Fork:**
-    * **Observer-Limited Branch:** If the information efficiency peak $k^*$ changes positions along the depth axis ($\partial k^* / \partial \lambda_N \neq 0$), the limit is driven by the observer's derivative reconstruction instability.
-    * **Structure-Limited Branch:** If $k^*$ remains pinned at a static depth ($\partial k^* / \partial \lambda_N \approx 0$), the boundary reflects a structural property of the system—either the exhaustion of true invariants or an incorrect choice of invariant class vocabulary.
+1. **Freeze Environment:** Lock dataset footprint constraints exactly at $N = 100000$, $\sigma = 0.02$, with fixed state-space coverage profiles.
+2. **Execute Step Intervention:** Evaluate the system across an explicit shift in filter scale:
+   $$\lambda_N^{(1)} = 1.0 \quad \longrightarrow \quad \lambda_N^{(2)} = 8.0$$
+3. **Evaluate Causal Fork:**
+   * **Observer-Limited Branch:** If the information efficiency peak $k^*$, changes positions along the depth axis ($\frac{\partial k^*}{\partial \lambda_N} \neq 0$), the limit is driven by the observer's derivative reconstruction instability.
+   * **Structure-Limited Branch:** If $k^*$ remains pinned at a static depth ($\frac{\partial k^*}{\partial \lambda_N} \approx 0$), the boundary reflects a structural property of the system—either the exhaustion of true invariants or an incorrect choice of invariant class vocabulary.
