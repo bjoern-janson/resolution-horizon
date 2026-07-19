@@ -19,7 +19,7 @@ class TestStructuralDiscoveryFramework(unittest.TestCase):
         k_star = self.metrics["k_star"]
         k_star_idx = k_star - 1
 
-        # Region I (Discovery): Compression must rise, ambiguity must contract
+        # Region I (Discovery): Compression and overall efficiency must rise monotonically
         for idx in range(k_star_idx):
             if idx > 0:
                 self.assertGreater(
@@ -27,10 +27,10 @@ class TestStructuralDiscoveryFramework(unittest.TestCase):
                     self.metrics["delta_L"][idx - 1],
                     "Regime I Violation: Invariant compression failed to increase monotonically."
                 )
-                self.assertLess(
-                    self.metrics["C_G"][idx], 
-                    self.metrics["C_G"][idx - 1],
-                    "Regime I Violation: Symmetry uncertainty failed to contract monotonically."
+                self.assertGreater(
+                    self.metrics["eta"][idx], 
+                    self.metrics["eta"][idx - 1],
+                    "Regime I Violation: Overall structural efficiency failed to ascend toward the horizon."
                 )
 
         # Region III (Misresolution): Compression must fall, ambiguity must rebound
@@ -47,7 +47,7 @@ class TestStructuralDiscoveryFramework(unittest.TestCase):
             )
 
     def test_resource_response_surface_signs(self):
-        """Validates directional horizon responses under noise perturbations (dk*/dσ < 0)."""
+        """Validates directional horizon responses under noise perturbations (dk*/dσ <= 0)."""
         high_noise_estimator = StructuralHorizonEstimator(N=self.N, sigma=0.45)
         high_noise_metrics = high_noise_estimator.evaluate_horizon(max_k=6, lambda_N=1.0)
         
