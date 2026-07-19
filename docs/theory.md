@@ -10,11 +10,11 @@ In classical physics and modern representation learning, the discovery of invari
 
 When an observer constructs a representation of a dynamical system, they build an approximate vector field $\hat{F}_{N,\lambda_N}$ from localized trajectory samples. To extract coordinate-invariant structural laws, the observer must compute high-order algebraic structures, such as the Lie brackets of the vector field:
 
-$$\text{Lie}_k(\hat{F}) = \left\{ \hat{F}, [\hat{F}, \cdot], [\hat{F}, [\hat{F}, \cdot]], \dots \right\}$$
+$$\text{Lie}_k(\hat{F}) = \{ \hat{F}, [\hat{F}, \cdot], [\hat{F}, [\hat{F}, \cdot]], \dots \}$$
 
 Every step down this algebraic tree requires numerical differentiation. By the basic laws of statistical estimation, taking derivatives amplifies high-frequency noise. The variance of the estimated generator field scales exponentially with the depth $k$ of the algebra:
 
-$$\text{Var}\left(D^k \hat{F}_{N,\lambda_N}\right) \sim A_k \frac{\sigma^2}{N^{\alpha_k}}$$
+$$\text{Var}(D^k \hat{F}_{N,\lambda_N}) \sim A_k \frac{\sigma^2}{N^{\alpha_k}}$$
 
 Consequently, the observer’s spatial resolution degrades at deeper layers of structural abstraction. The metric tolerance $\epsilon_k$ within which two coordinate representations appear observationally indistinguishable must widen to accommodate this variance envelope.
 
