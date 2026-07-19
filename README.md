@@ -20,7 +20,7 @@ Given finite observations of a dynamical system, increasing structural depth ini
 
 The primary empirical quantity is the information efficiency exchange rate $\eta(k)$, balancing compression value against structural ambiguity:
 
-$$\eta(k) = \frac{\Delta L(k)}{C_G(k)} = \frac{L(\mathcal{D}_N \mid \text{Baseline}) - L\left(\mathcal{D}_N \ \Big|\  \frac{\text{Lie}_k(\hat{F})}{\hat{G}^{(k)}}\right)}{L(\theta_G) + \log N\left(\delta, \ \hat{G}^{(k)}(\epsilon_k) \cap B_R, \ d_{C^{k+1}}\right)}$$
+$$\eta(k) = \frac{\Delta L(k)}{C_G(k)} = \frac{L(\mathcal{D}_N \mid \text{Baseline}) - L\left(\mathcal{D}_N \ \Big\vert{}\  \frac{\text{Lie}_k(\hat{F})}{\hat{G}^{(k)}}\right)}{L(\theta_G) + \log N\left(\delta, \ \hat{G}^{(k)}(\epsilon_k) \cap B_R, \ d_{C^{k+1}}\right)}$$
 
 The optimal discovery horizon is defined as:
 $$k^* = \arg\max_k \eta(k)$$
@@ -52,21 +52,22 @@ The interaction between the twin informational curves produces a distinctive cou
 
 ## Repository Structure
 
+```text
 ├── instrument.py      # Quantitative measurement core & metric calculators
 ├── experiment.py      # Regularization Bypass protocol & causal interventions
 ├── test_suite.py      # Automated topological verification harness
 └── README.md          # Project specification and deployment guide
+```
 
----
+Execution & DiagnosticsTo run the Regularization Bypass Experiment—applying a causal intervention on the smoothing parameter ($\lambda_N$) to isolate observer-limited horizons from system-limited ceilings:
 
-## Execution & Diagnostics
-
-To run the **Regularization Bypass Experiment**—applying a causal intervention on the smoothing parameter ($\lambda_N$) to isolate observer-limited horizons from system-limited ceilings:
-```bash
+#!/bin/bash
+echo "Running Regularization Bypass Experiment..."
 python experiment.py
 
 To execute the automated test suite verifying the paired curve phase signatures and directional derivative signs:
 
+echo "Running Verification Test Suite..."
 python -m unittest test_suite.py
 
 Philosophy
