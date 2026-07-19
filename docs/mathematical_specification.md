@@ -11,7 +11,7 @@ Let $\mathcal{M}$ be a smooth $d$-dimensional manifold, and let $F \in \mathfrak
 The algebraic depth space $\text{Lie}_k(\hat{F})$ is defined as the filtered Lie algebra subspace spanned by iterated Lie brackets up to depth $k$:
 
 $$\text{Lie}_0(\hat{F}) = \text{span}\{\hat{F}\}$$
-$$\text{Lie}_k(\hat{F}) = \text{span}\left(\{ [\hat{X}, \hat{Y}] : \hat{X} \in \text{Lie}_{k-1}(\hat{F}), \, \hat{Y} \in \text{Lie}_0(\hat{F}) \}\right)$$
+$$\text{Lie}_k(\hat{F}) = \text{span}(\{ [\hat{X}, \hat{Y}] : \hat{X} \in \text{Lie}_{k-1}(\hat{F}), \, \hat{Y} \in \text{Lie}_0(\hat{F}) \})$$
 
 ---
 
@@ -29,7 +29,7 @@ Symmetries are formalized not as absolute mathematical transformations, but as a
 
 Given a data-dependent metric tolerance $\epsilon_k(N, \sigma, \lambda_N)$ and the jet metric $d_{C^{k+1}}$, the empirical gauge group is defined as:
 
-$$\hat{G}^{(k)}(\epsilon_k) \cap B_R = \left\{ g \in B_R : \sup_{\phi \in \widehat{\text{Inv}}_k} d_{C^{k+1}}(\phi, \, g^*\phi) < \epsilon_k \right\}$$
+$$\hat{G}^{(k)}(\epsilon_k) \cap B_R = \{ g \in B_R : \sup_{\phi \in \widehat{\text{Inv}}_k} d_{C^{k+1}}(\phi, \, g^*\phi) < \epsilon_k \}$$
 
 where the evaluation tolerance scales with high-order derivative variance:
 
